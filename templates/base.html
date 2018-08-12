@@ -98,6 +98,7 @@
 
     <div class="section" style="margin-top: 20px">
         <div class="container">
+            {% csrf_token %}
             {% block content %}
             {% endblock %}
 
