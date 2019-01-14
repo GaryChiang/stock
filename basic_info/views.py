@@ -33,7 +33,7 @@ class IndexView(View):
                 item = datetime.datetime.strftime(item, "%Y-%m-%d")
                 date.append(item)
 
-            return JsonResponse({'result': True, 'date': date, 'name': name, 'price': price})
+            return JsonResponse({'result': True, 'date': date, 'name': name, 'price': price, 'original': data })
 
         except Exception as e:
             return JsonResponse({'result': False})
