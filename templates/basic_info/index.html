@@ -233,7 +233,7 @@
         var search = function () {
             config.data.datasets.splice(0, config.data.datasets.length);
             config.data.labels.splice(0, config.data.labels.length);
-            //window.myLine.update();
+            window.myLine.update();
 
             $.ajax({
                 url: '{% url 'basic_info:index' %}',
