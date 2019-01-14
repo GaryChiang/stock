@@ -231,6 +231,8 @@
 
 
         var search = function () {
+            config.data.datasets.splice(0, config.data.datasets.length);
+            //window.myLine.update();
 
             $.ajax({
                 url: '{% url 'basic_info:index' %}',
@@ -242,10 +244,6 @@
                 async: false,
                 success: function (json) {
                     if (json.result === true) {
-                        config.data.datasets.splice(0, config.data.datasets.length);
-                        window.myLine.update();
-
-
                         let colorName = colorNames[config.data.datasets.length % colorNames.length];
                         let newColor = window.chartColors[colorName];
                         let newDataset = {
