@@ -278,7 +278,7 @@
         }
         
         var setData = function(config, newDataset){
-             config.data.datasets.push(newDataset);
+            config.data.datasets.push(newDataset);
             return config;
         }  
         
@@ -287,9 +287,9 @@
         }
         
         var updateChart = function(callback1, callback2, callback3, config, newDataset){
-            var revisedConfig = callback(config);
+            var revisedConfig = callback1(config);
             var finalRevisedConfig = callback2(revisedConfig, newDataset);
-            triggerChartLibrary(finalRevisedConfig);            
+            callback3(finalRevisedConfig);            
         }
 
 
