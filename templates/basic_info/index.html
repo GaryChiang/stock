@@ -256,7 +256,7 @@
                             fill: false
                         };
 
-                        updateChart(setLabels, setData, triggerChartLibrary, config, newDataset); 
+                        updateChart(setLabels, setData, triggerChartLibrary, config, newDataset, json); 
                     }
 
                 },
@@ -269,7 +269,7 @@
         
         
         
-        var setLabels = function(config){ 
+        var setLabels = function(config, json){ 
             for (let i = 0; i < json.date.length; i++) {
                 config.data.labels.push(json.date[i]);
             }
@@ -286,8 +286,8 @@
           window.myLine.update();
         }
         
-        var updateChart = function(callback1, callback2, callback3, config, newDataset){
-            var revisedConfig = callback1(config);
+        var updateChart = function(callback1, callback2, callback3, config, newDataset, json){
+            var revisedConfig = callback1(config, json);
             var finalRevisedConfig = callback2(revisedConfig, newDataset);
             callback3(finalRevisedConfig);            
         }
