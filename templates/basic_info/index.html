@@ -255,7 +255,7 @@
                             fill: false
                         };
 
-                        updateChart(setLabels, setData, triggerChartLibrary, config, newDataset, json); 
+                        updateChart(setLabels, setData, config, newDataset, json); 
                     }
 
                 },
@@ -267,7 +267,7 @@
         }
         
         
-        
+        //設定X軸labels
         var setLabels = function(config, json){ 
             for (let i = 0; i < json.date.length; i++) {
                 config.data.labels.push(json.date[i]);
@@ -275,20 +275,15 @@
             
             return config;
         }
-        
+        //設定line chart 的資料
         var setData = function(config, newDataset){
             config.data.datasets.push(newDataset);
             return config;
-        }  
-        
-        var triggerChartLibrary = function(config){
-          window.myLine.update();
         }
-        
-        var updateChart = function(callback1, callback2, callback3, config, newDataset, json){
+        var updateChart = function(callback1, callback2, config, newDataset, json){
             var revisedConfig = callback1(config, json);
             var finalRevisedConfig = callback2(revisedConfig, newDataset);
-            callback3(finalRevisedConfig);            
+            window.myLine.update();           
         }
 
 
