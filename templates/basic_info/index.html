@@ -256,17 +256,7 @@
                             fill: false
                         };
 
-                        //x軸座標 還未加到設定檔, 才做設定
-                        if (config.data.labels.length === 0) {
-                            for (let i = 0; i < json.date.length; i++) {
-                                config.data.labels.push(json.date[i]);
-                            }
-                        }
-
-                        config.data.datasets.push(newDataset);
-                        window.myLine.update();
-
-
+                        updateChart(setLabels, setData, triggerChartLibrary, config, newDataset); 
                     }
 
                 },
@@ -275,6 +265,31 @@
                 }
             });
 
+        }
+        
+        
+        
+        var setLabels = function(config){ 
+            for (let i = 0; i < json.date.length; i++) {
+                config.data.labels.push(json.date[i]);
+            }
+            
+            return config;
+        }
+        
+        var setData = function(config, newDataset){
+             config.data.datasets.push(newDataset);
+            return config;
+        }  
+        
+        var triggerChartLibrary = function(config){
+          window.myLine.update();
+        }
+        
+        var updateChart = function(callback1, callback2, callback3, config, newDataset){
+            var revisedConfig = callback(config);
+            var finalRevisedConfig = callback2(revisedConfig, newDataset);
+            triggerChartLibrary(finalRevisedConfig);            
         }
 
 
